@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/csv"
-	"fmt"
 	"os"
 	"sort"
 	"strconv"
@@ -83,7 +82,6 @@ func writeCSVFile(destinyFilePath string, dataMatrix DataMatrix, header []string
 
 func main() {
 	sourceFilePath, destinyFilePath := os.Args[1], os.Args[2]
-	fmt.Println(sourceFilePath, destinyFilePath)
 	rows, header := readCSVFile(sourceFilePath)
 
 	dataMatrix := DataMatrix(rows)
