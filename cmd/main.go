@@ -34,7 +34,21 @@ func (dm DataMatrix) Less(i, j int) bool {
 		return age1 < age2
 	}
 
-	return strings.ToLower(name1) < strings.ToLower(name2)
+	minLen := min(len(name1), len(name2))
+
+	for i := 0; i < minLen; i++ {
+		if name1[i] != name2[i] {
+			upper1 := strings.ToUpper(string(name1[i]))
+			upper2 := strings.ToUpper(string(name2[i]))
+
+			if upper1 == upper2 {
+				return name1[i] < name2[i]
+			}
+			return upper1 < upper2
+		}
+	}
+
+	return name1 < name2
 }
 
 func readCSVFile(sourceFilePath string) ([][]string, []string) {
