@@ -5,6 +5,7 @@ import (
 	"os"
 	"sort"
 	"strconv"
+	"strings"
 )
 
 type DataMatrix [][]string
@@ -33,7 +34,7 @@ func (dm DataMatrix) Less(i, j int) bool {
 		return age1 < age2
 	}
 
-	return name1 < name2
+	return strings.ToLower(name1) < strings.ToLower(name2)
 }
 
 func readCSVFile(sourceFilePath string) ([][]string, []string) {
